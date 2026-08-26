@@ -2,9 +2,9 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-    <title>MORSE//NET — Morse Translator</title>
+    <title>MORSE//NET — Translator</title>
 
     <link rel="stylesheet" href="includes/style.css">
 </head>
@@ -20,8 +20,6 @@
     </div>
 
     <nav class="socials">
-
-        <!-- CAMBIA ESTOS ENLACES POR LOS TUYOS -->
 
         <a href="https://github.com/" target="_blank" aria-label="GitHub">
             <svg viewBox="0 0 24 24">
@@ -53,7 +51,7 @@
     <section class="hero">
 
         <div class="terminal-label">
-            [ INSTANT MORSE TERMINAL ]
+            [ LIVE CONVERTER ]
         </div>
 
         <h1>
@@ -61,7 +59,7 @@
         </h1>
 
         <p>
-            Escribe y convierte automáticamente texto ↔ código Morse.
+            Escribe y convierte automáticamente.
         </p>
 
     </section>
@@ -69,15 +67,14 @@
 
     <section class="translator">
 
-        <!-- ENTRADA -->
+        <!-- INPUT -->
 
         <div class="panel">
 
             <div class="panel-header">
 
                 <span>
-                    <span class="green">&gt;</span>
-                    INPUT
+                    <b>&gt;</b> INPUT
                 </span>
 
                 <span id="inputStatus">
@@ -88,14 +85,14 @@
 
             <textarea
                 id="inputText"
-                placeholder="Escribe texto o código Morse..."
+                placeholder="Escribe texto o Morse..."
                 spellcheck="false"
             ></textarea>
 
             <div class="panel-footer">
 
                 <span id="inputCounter">
-                    0 caracteres
+                    0
                 </span>
 
                 <button
@@ -112,32 +109,29 @@
 
         <!-- CENTRO -->
 
-        <div class="middle">
+        <div class="converter-center">
 
-            <div class="direction">
-                AUTO
-            </div>
+            <div class="line"></div>
 
-            <div class="arrow">
+            <div class="convert-icon">
                 ⇄
             </div>
 
-            <div class="live">
-                ● LIVE
-            </div>
+            <span>LIVE</span>
+
+            <div class="line"></div>
 
         </div>
 
 
-        <!-- SALIDA -->
+        <!-- OUTPUT -->
 
-        <div class="panel output-panel">
+        <div class="panel">
 
             <div class="panel-header">
 
                 <span>
-                    <span class="green">&gt;</span>
-                    OUTPUT
+                    <b>&gt;</b> OUTPUT
                 </span>
 
                 <span id="outputStatus">
@@ -148,7 +142,7 @@
 
             <textarea
                 id="outputText"
-                placeholder="La traducción aparecerá aquí..."
+                placeholder="Resultado..."
                 spellcheck="false"
                 readonly
             ></textarea>
@@ -156,7 +150,7 @@
             <div class="panel-footer">
 
                 <span id="outputCounter">
-                    0 caracteres
+                    0
                 </span>
 
                 <button
@@ -175,14 +169,18 @@
 
     <section class="actions">
 
-        <button id="clearBtn" class="action danger">
-            <span>×</span>
-            LIMPIAR
+        <button
+            id="clearBtn"
+            class="action danger"
+        >
+            × LIMPIAR
         </button>
 
-        <button id="swapBtn" class="action">
-            <span>⇄</span>
-            INTERCAMBIAR
+        <button
+            id="swapBtn"
+            class="action"
+        >
+            ⇄ INTERCAMBIAR
         </button>
 
     </section>
@@ -191,69 +189,38 @@
     <section class="info">
 
         <div class="info-card">
-
-            <div class="info-icon">
-                01
-            </div>
-
+            <strong>01</strong>
             <div>
                 <h3>TEXTO → MORSE</h3>
-
-                <p>
-                    Escribe texto y la conversión a código Morse
-                    aparecerá automáticamente.
-                </p>
+                <p>Conversión instantánea mientras escribes.</p>
             </div>
-
         </div>
 
-
         <div class="info-card">
-
-            <div class="info-icon">
-                02
-            </div>
-
+            <strong>02</strong>
             <div>
                 <h3>MORSE → TEXTO</h3>
-
-                <p>
-                    Escribe código Morse y el mensaje se
-                    convierte automáticamente.
-                </p>
+                <p>Detecta Morse automáticamente.</p>
             </div>
-
         </div>
 
-
         <div class="info-card">
-
-            <div class="info-icon">
-                03
-            </div>
-
+            <strong>03</strong>
             <div>
-                <h3>100% LOCAL</h3>
-
-                <p>
-                    La conversión se realiza directamente
-                    en tu navegador.
-                </p>
+                <h3>LOCAL</h3>
+                <p>Todo funciona directamente en el navegador.</p>
             </div>
-
         </div>
 
     </section>
 
 
     <footer>
-
         MORSE//NET
         <span>•</span>
-        MORSE TEXT CONVERTER
+        MORSE CONVERTER
         <span>•</span>
         v2.0
-
     </footer>
 
 </main>
