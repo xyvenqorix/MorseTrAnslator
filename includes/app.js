@@ -1,16 +1,5 @@
 "use strict";
 
-/*
-    MORSE//NET
-    Conversor automático Texto <-> Morse
-
-    No es un sistema de cifrado.
-    Morse es un código de sustitución:
-    A = .-
-    B = -...
-    etc.
-*/
-
 
 const MORSE = {
 
@@ -73,22 +62,12 @@ const MORSE = {
 };
 
 
-/*
-    TABLA INVERSA
-*/
-
 const REVERSE_MORSE = {};
 
-Object.entries(MORSE).forEach(([letter, code]) => {
-
+for (const [letter, code] of Object.entries(MORSE)) {
     REVERSE_MORSE[code] = letter;
+}
 
-});
-
-
-/*
-    ELEMENTOS
-*/
 
 const inputText =
     document.getElementById("inputText");
@@ -121,9 +100,7 @@ const outputStatus =
     document.getElementById("outputStatus");
 
 
-/*
-    NORMALIZAR TEXTO
-*/
+/* NORMALIZAR */
 
 function normalizeText(text) {
 
@@ -135,9 +112,7 @@ function normalizeText(text) {
 }
 
 
-/*
-    TEXTO → MORSE
-*/
+/* TEXTO → MORSE */
 
 function textToMorse(text) {
 
@@ -151,9 +126,9 @@ function textToMorse(text) {
 
             return word
                 .split("")
-                .map(character => {
+                .map(char => {
 
-                    return MORSE[character] || character;
+                    return MORSE[char] || char;
 
                 })
                 .join(" ");
@@ -164,17 +139,13 @@ function textToMorse(text) {
 }
 
 
-/*
-    MORSE → TEXTO
-*/
+/* MORSE → TEXTO */
 
 function morseToText(morse) {
 
-    const words = morse
+    return morse
         .trim()
-        .split(/\s*\/\s*/);
-
-    return words
+        .split(/\s*\/\s*/)
         .map(word => {
 
             return word
@@ -194,9 +165,7 @@ function morseToText(morse) {
 }
 
 
-/*
-    DETECTAR MORSE
-*/
+/* DETECTAR MORSE */
 
 function looksLikeMorse(text) {
 
@@ -207,57 +176,24 @@ function looksLikeMorse(text) {
         return false;
     }
 
-    /*
-        Si tiene letras normales,
-        claramente es texto.
-    */
-
-    if (/[a-zA-ZáéíóúüñÁÉÍÓÚÜÑ]/.test(clean)) {
+    if (
+        /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(clean)
+    ) {
         return false;
     }
 
-    /*
-        Morse solamente:
-        . - espacios /
-    */
-
-    return /^[.\-\/\s]+$/.test(clean)
-        && /[.-]/.test(clean);
+    return (
+        /^[.\-\/\s]+$/.test(clean)
+        &&
+        /[.-]/.test(clean)
+    );
 
 }
 
 
-/*
-    CONTADORES
-*/
+/* CONVERTIR */
 
-function updateCounters() {
-
-    inputCounter.textContent =
-        `${inputText.value.length} caracteres`;
-
-    outputCounter.textContent =
-        `${outputText.value.length} caracteres`;
-
-}
-
-
-/*
-    ESTADOS
-*/
-
-function setStatus(element, text) {
-
-    element.textContent = text;
-
-}
-
-
-/*
-    CONVERSIÓN AUTOMÁTICA
-*/
-
-function autoConvert() {
+function convert() {
 
     const value =
         inputText.value;
@@ -266,15 +202,11 @@ function autoConvert() {
 
         outputText.value = "";
 
-        setStatus(
-            inputStatus,
-            "READY"
-        );
+        inputStatus.textContent =
+            "READY";
 
-        setStatus(
-            outputStatus,
-            "WAITING"
-        );
+        outputStatus.textContent =
+            "WAITING";
 
         updateCounters();
 
@@ -282,71 +214,61 @@ function autoConvert() {
     }
 
 
-    /*
-        MORSE
-    */
-
     if (looksLikeMorse(value)) {
 
         outputText.value =
             morseToText(value);
 
-        setStatus(
-            inputStatus,
-            "MORSE"
-        );
+        inputStatus.textContent =
+            "MORSE";
 
-        setStatus(
-            outputStatus,
-            "TEXT READY"
-        );
+        outputStatus.textContent =
+            "TEXT";
 
-    }
-
-    /*
-        TEXTO
-    */
-
-    else {
+    } else {
 
         outputText.value =
             textToMorse(value);
 
-        setStatus(
-            inputStatus,
-            "TEXT"
-        );
+        inputStatus.textContent =
+            "TEXT";
 
-        setStatus(
-            outputStatus,
-            "MORSE READY"
-        );
+        outputStatus.textContent =
+            "MORSE";
 
     }
-
 
     updateCounters();
 
 }
 
 
-/*
-    COPIAR
-*/
+/* CONTADORES */
+
+function updateCounters() {
+
+    inputCounter.textContent =
+        inputText.value.length;
+
+    outputCounter.textContent =
+        outputText.value.length;
+
+}
+
+
+/* COPIAR */
 
 async function copyOutput() {
 
-    const text =
-        outputText.value;
-
-    if (!text) {
+    if (!outputText.value) {
         return;
     }
 
     try {
 
-        await navigator.clipboard
-            .writeText(text);
+        await navigator.clipboard.writeText(
+            outputText.value
+        );
 
     } catch {
 
@@ -357,34 +279,31 @@ async function copyOutput() {
     }
 
     copyBtn.textContent =
-        "COPIADO ✓";
+        "✓ COPIADO";
 
     setTimeout(() => {
 
         copyBtn.textContent =
             "COPIAR";
 
-    }, 1500);
+    }, 1200);
 
 }
 
 
-/*
-    PEGAR
-*/
+/* PEGAR */
 
 async function pasteInput() {
 
     try {
 
         const text =
-            await navigator.clipboard
-                .readText();
+            await navigator.clipboard.readText();
 
         inputText.value =
             text;
 
-        autoConvert();
+        convert();
 
         inputText.focus();
 
@@ -397,25 +316,18 @@ async function pasteInput() {
 }
 
 
-/*
-    LIMPIAR
-*/
+/* LIMPIAR */
 
 function clearAll() {
 
     inputText.value = "";
-
     outputText.value = "";
 
-    setStatus(
-        inputStatus,
-        "READY"
-    );
+    inputStatus.textContent =
+        "READY";
 
-    setStatus(
-        outputStatus,
-        "WAITING"
-    );
+    outputStatus.textContent =
+        "WAITING";
 
     updateCounters();
 
@@ -424,64 +336,51 @@ function clearAll() {
 }
 
 
-/*
-    INTERCAMBIAR
-*/
+/* INTERCAMBIAR */
 
 function swapValues() {
 
-    const oldInput =
+    const input =
         inputText.value;
 
     inputText.value =
         outputText.value;
 
     outputText.value =
-        oldInput;
+        input;
 
-    setStatus(
-        inputStatus,
-        "SWAPPED"
-    );
+    inputStatus.textContent =
+        "SWAPPED";
 
-    setStatus(
-        outputStatus,
-        "SWAPPED"
-    );
+    outputStatus.textContent =
+        "SWAPPED";
 
     updateCounters();
 
 }
 
 
-/*
-    EVENTOS
-*/
-
+/* EVENTOS */
 
 inputText.addEventListener(
     "input",
-    autoConvert
+    convert
 );
-
 
 copyBtn.addEventListener(
     "click",
     copyOutput
 );
 
-
 pasteBtn.addEventListener(
     "click",
     pasteInput
 );
 
-
 clearBtn.addEventListener(
     "click",
     clearAll
 );
-
 
 swapBtn.addEventListener(
     "click",
@@ -489,8 +388,6 @@ swapBtn.addEventListener(
 );
 
 
-/*
-    INICIO
-*/
+/* INICIO */
 
 updateCounters();
