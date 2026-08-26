@@ -1,6 +1,18 @@
 "use strict";
 
 
+/*
+    MORSE//NET
+
+    Conversor automático:
+    TEXTO <-> MORSE
+
+    Morse NO es cifrado seguro.
+    Es simplemente un sistema de
+    representación de caracteres.
+*/
+
+
 const MORSE = {
 
     A: ".-",
@@ -62,42 +74,77 @@ const MORSE = {
 };
 
 
+/* TABLA INVERSA */
+
 const REVERSE_MORSE = {};
 
-for (const [letter, code] of Object.entries(MORSE)) {
-    REVERSE_MORSE[code] = letter;
+for (
+    const [letter, code]
+    of Object.entries(MORSE)
+) {
+
+    REVERSE_MORSE[code] =
+        letter;
+
 }
 
 
+/* ELEMENTOS */
+
 const inputText =
-    document.getElementById("inputText");
+    document.getElementById(
+        "inputText"
+    );
 
 const outputText =
-    document.getElementById("outputText");
+    document.getElementById(
+        "outputText"
+    );
 
 const copyBtn =
-    document.getElementById("copyBtn");
+    document.getElementById(
+        "copyBtn"
+    );
 
 const pasteBtn =
-    document.getElementById("pasteBtn");
+    document.getElementById(
+        "pasteBtn"
+    );
 
 const clearBtn =
-    document.getElementById("clearBtn");
+    document.getElementById(
+        "clearBtn"
+    );
 
 const swapBtn =
-    document.getElementById("swapBtn");
+    document.getElementById(
+        "swapBtn"
+    );
 
 const inputCounter =
-    document.getElementById("inputCounter");
+    document.getElementById(
+        "inputCounter"
+    );
 
 const outputCounter =
-    document.getElementById("outputCounter");
+    document.getElementById(
+        "outputCounter"
+    );
 
 const inputStatus =
-    document.getElementById("inputStatus");
+    document.getElementById(
+        "inputStatus"
+    );
 
 const outputStatus =
-    document.getElementById("outputStatus");
+    document.getElementById(
+        "outputStatus"
+    );
+
+const liveStatus =
+    document.getElementById(
+        "liveStatus"
+    );
 
 
 /* NORMALIZAR */
@@ -106,7 +153,10 @@ function normalizeText(text) {
 
     return text
         .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "")
+        .replace(
+            /[\u0300-\u036f]/g,
+            ""
+        )
         .toUpperCase();
 
 }
@@ -126,9 +176,13 @@ function textToMorse(text) {
 
             return word
                 .split("")
-                .map(char => {
+                .map(character => {
 
-                    return MORSE[char] || char;
+                    return (
+                        MORSE[character]
+                        ||
+                        character
+                    );
 
                 })
                 .join(" ");
@@ -145,7 +199,9 @@ function morseToText(morse) {
 
     return morse
         .trim()
-        .split(/\s*\/\s*/)
+        .split(
+            /\s*\/\s*/
+        )
         .map(word => {
 
             return word
@@ -154,7 +210,11 @@ function morseToText(morse) {
                 .filter(Boolean)
                 .map(code => {
 
-                    return REVERSE_MORSE[code] || "";
+                    return (
+                        REVERSE_MORSE[code]
+                        ||
+                        ""
+                    );
 
                 })
                 .join("");
@@ -176,69 +236,32 @@ function looksLikeMorse(text) {
         return false;
     }
 
+    /*
+        Si contiene letras,
+        lo consideramos texto.
+    */
+
     if (
-        /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/.test(clean)
+        /[A-Za-zÁÉÍÓÚÜÑáéíóúüñ]/
+            .test(clean)
     ) {
+
         return false;
+
     }
+
+
+    /*
+        Morse solamente puede
+        contener puntos, guiones,
+        espacios y /
+    */
 
     return (
         /^[.\-\/\s]+$/.test(clean)
         &&
         /[.-]/.test(clean)
     );
-
-}
-
-
-/* CONVERTIR */
-
-function convert() {
-
-    const value =
-        inputText.value;
-
-    if (!value.trim()) {
-
-        outputText.value = "";
-
-        inputStatus.textContent =
-            "READY";
-
-        outputStatus.textContent =
-            "WAITING";
-
-        updateCounters();
-
-        return;
-    }
-
-
-    if (looksLikeMorse(value)) {
-
-        outputText.value =
-            morseToText(value);
-
-        inputStatus.textContent =
-            "MORSE";
-
-        outputStatus.textContent =
-            "TEXT";
-
-    } else {
-
-        outputText.value =
-            textToMorse(value);
-
-        inputStatus.textContent =
-            "TEXT";
-
-        outputStatus.textContent =
-            "MORSE";
-
-    }
-
-    updateCounters();
 
 }
 
@@ -256,6 +279,99 @@ function updateCounters() {
 }
 
 
+/* CAMBIAR LIVE */
+
+function setLive(status) {
+
+    liveStatus.textContent =
+        status;
+
+}
+
+
+/* CONVERSIÓN */
+
+function convert() {
+
+    const value =
+        inputText.value;
+
+
+    /*
+        SIN TEXTO
+    */
+
+    if (!value.trim()) {
+
+        outputText.value = "";
+
+        inputStatus.textContent =
+            "READY";
+
+        outputStatus.textContent =
+            "WAITING";
+
+        setLive(
+            "● WAIT"
+        );
+
+        updateCounters();
+
+        return;
+    }
+
+
+    /*
+        MORSE
+    */
+
+    if (
+        looksLikeMorse(value)
+    ) {
+
+        outputText.value =
+            morseToText(value);
+
+        inputStatus.textContent =
+            "MORSE";
+
+        outputStatus.textContent =
+            "TEXT";
+
+        setLive(
+            "● MORSE"
+        );
+
+    }
+
+
+    /*
+        TEXTO
+    */
+
+    else {
+
+        outputText.value =
+            textToMorse(value);
+
+        inputStatus.textContent =
+            "TEXT";
+
+        outputStatus.textContent =
+            "MORSE";
+
+        setLive(
+            "● TEXT"
+        );
+
+    }
+
+
+    updateCounters();
+
+}
+
+
 /* COPIAR */
 
 async function copyOutput() {
@@ -266,20 +382,26 @@ async function copyOutput() {
 
     try {
 
-        await navigator.clipboard.writeText(
-            outputText.value
-        );
+        await navigator
+            .clipboard
+            .writeText(
+                outputText.value
+            );
 
     } catch {
 
         outputText.select();
 
-        document.execCommand("copy");
+        document.execCommand(
+            "copy"
+        );
 
     }
 
+
     copyBtn.textContent =
         "✓ COPIADO";
+
 
     setTimeout(() => {
 
@@ -298,7 +420,9 @@ async function pasteInput() {
     try {
 
         const text =
-            await navigator.clipboard.readText();
+            await navigator
+                .clipboard
+                .readText();
 
         inputText.value =
             text;
@@ -321,6 +445,7 @@ async function pasteInput() {
 function clearAll() {
 
     inputText.value = "";
+
     outputText.value = "";
 
     inputStatus.textContent =
@@ -328,6 +453,10 @@ function clearAll() {
 
     outputStatus.textContent =
         "WAITING";
+
+    setLive(
+        "● WAIT"
+    );
 
     updateCounters();
 
@@ -354,6 +483,10 @@ function swapValues() {
 
     outputStatus.textContent =
         "SWAPPED";
+
+    setLive(
+        "● SWAP"
+    );
 
     updateCounters();
 
@@ -391,3 +524,7 @@ swapBtn.addEventListener(
 /* INICIO */
 
 updateCounters();
+
+setLive(
+    "● WAIT"
+);
