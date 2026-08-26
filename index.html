@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MORSE//NET — Hacker Translator</title>
+
+    <link rel="stylesheet" href="includes/style.css">
+</head>
+
+<body>
+
+    <div class="scanlines"></div>
+
+    <header class="topbar">
+        <div class="logo">
+            <span>&gt;_</span> MORSE<span class="blink">_</span>NET
+        </div>
+
+        <div class="status">
+            <span class="status-dot"></span>
+            SYSTEM ONLINE
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="hero">
+            <div class="terminal-label">
+                [ SECURE COMMUNICATION TERMINAL ]
+            </div>
+
+            <h1>
+                MORSE<span>//</span>TRANSLATOR
+            </h1>
+
+            <p>
+                Convierte texto ↔ código Morse de forma instantánea.
+            </p>
+        </section>
+
+
+        <section class="translator">
+
+            <!-- ENTRADA -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+                    <span>
+                        <span class="green">&gt;</span>
+                        INPUT
+                    </span>
+
+                    <span id="inputStatus">
+                        READY
+                    </span>
+                </div>
+
+                <textarea
+                    id="inputText"
+                    placeholder="Escribe texto o pega código Morse aquí..."
+                    spellcheck="false"
+                ></textarea>
+
+                <div class="panel-footer">
+
+                    <span id="inputCounter">
+                        0 caracteres
+                    </span>
+
+                    <button
+                        class="small-btn"
+                        id="pasteBtn"
+                    >
+                        PEGAR
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- CONTROLES -->
+
+            <div class="controls">
+
+                <button
+                    id="encodeBtn"
+                    class="main-btn"
+                >
+                    <span>→</span>
+                    TEXTO → MORSE
+                </button>
+
+                <button
+                    id="decodeBtn"
+                    class="main-btn secondary"
+                >
+                    <span>←</span>
+                    MORSE → TEXTO
+                </button>
+
+                <button
+                    id="autoBtn"
+                    class="auto-btn"
+                >
+                    ⚡ DETECCIÓN AUTOMÁTICA
+                </button>
+
+            </div>
+
+
+            <!-- SALIDA -->
+
+            <div class="panel output-panel">
+
+                <div class="panel-header">
+
+                    <span>
+                        <span class="green">&gt;</span>
+                        OUTPUT
+                    </span>
+
+                    <span id="outputStatus">
+                        WAITING
+                    </span>
+
+                </div>
+
+                <textarea
+                    id="outputText"
+                    placeholder="El resultado aparecerá aquí..."
+                    spellcheck="false"
+                    readonly
+                ></textarea>
+
+                <div class="panel-footer">
+
+                    <span id="outputCounter">
+                        0 caracteres
+                    </span>
+
+                    <button
+                        class="small-btn copy-btn"
+                        id="copyBtn"
+                    >
+                        COPIAR
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- ACCIONES -->
+
+        <section class="actions">
+
+            <button id="clearBtn" class="action danger">
+                <span>×</span>
+                LIMPIAR
+            </button>
+
+            <button id="swapBtn" class="action">
+                <span>⇄</span>
+                INTERCAMBIAR
+            </button>
+
+        </section>
+
+
+        <!-- INFO -->
+
+        <section class="info">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    01
+                </div>
+
+                <div>
+                    <h3>TEXTO → MORSE</h3>
+
+                    <p>
+                        Escribe cualquier texto y conviértelo
+                        en código Morse para compartirlo.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    02
+                </div>
+
+                <div>
+                    <h3>MORSE → TEXTO</h3>
+
+                    <p>
+                        Pega el código recibido y recupera
+                        automáticamente el mensaje original.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="info-card">
+
+                <div class="info-icon">
+                    03
+                </div>
+
+                <div>
+                    <h3>COPY / PASTE</h3>
+
+                    <p>
+                        Copia el resultado con un toque y
+                        envíalo directamente a otra persona.
+                    </p>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <footer>
+            MORSE//NET
+            <span>•</span>
+            SECURE TEXT CONVERTER
+            <span>•</span>
+            v1.0
+        </footer>
+
+    </main>
+
+
+    <script src="includes/app.js"></script>
+
+</body>
+</html>
