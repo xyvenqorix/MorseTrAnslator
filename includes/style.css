@@ -453,12 +453,35 @@ textarea::placeholder {
         0 0 15px rgba(0,255,102,.08);
 }
 
-.converter-center span {
+
+/* LIVE REAL */
+
+#liveStatus {
+    color: var(--green);
+
     font-size: 7px;
 
     letter-spacing: 1px;
 
-    opacity: .7;
+    white-space: nowrap;
+
+    text-shadow:
+        0 0 6px var(--green);
+
+    animation:
+        livePulse 1.5s infinite;
+}
+
+@keyframes livePulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: .4;
+    }
 }
 
 
@@ -590,9 +613,7 @@ footer span {
     .topbar {
         height: 52px;
 
-        padding:
-            0
-            12px;
+        padding: 0 12px;
     }
 
     .logo {
@@ -711,7 +732,7 @@ footer span {
     }
 
 
-    /* CENTRO MINI */
+    /* CENTRO */
 
     .converter-center {
         gap: 4px;
@@ -724,12 +745,12 @@ footer span {
         font-size: 15px;
     }
 
-    .converter-center span {
+    #liveStatus {
         font-size: 5px;
     }
 
 
-    /* BOTONES SIEMPRE CERCA */
+    /* BOTONES */
 
     .actions {
         margin:
@@ -751,7 +772,7 @@ footer span {
     }
 
 
-    /* INFORMACIÓN COMPACTA */
+    /* INFO */
 
     .info {
         grid-template-columns:
@@ -849,4 +870,4 @@ footer span {
         padding: 6px;
     }
 
-        }
+}
