@@ -33,15 +33,13 @@ body {
 
     color: var(--text);
 
-    font-family:
-        "Courier New",
-        monospace;
+    font-family: "Courier New", monospace;
 
     overflow-x: hidden;
 }
 
 
-/* GRID */
+/* FONDO */
 
 body::before {
     content: "";
@@ -95,7 +93,6 @@ body::before {
 
 .topbar {
     height: 58px;
-
     width: 100%;
 
     display: flex;
@@ -145,7 +142,7 @@ body::before {
 }
 
 
-/* SOCIAL */
+/* REDES */
 
 .socials {
     display: flex;
@@ -177,6 +174,7 @@ body::before {
 
 .socials a:hover {
     color: #001a09;
+
     background: var(--green);
 
     box-shadow:
@@ -184,10 +182,11 @@ body::before {
 }
 
 
-/* MAIN */
+/* CONTENEDOR */
 
 .container {
     width: min(1180px, calc(100% - 32px));
+
     margin: auto;
 }
 
@@ -247,14 +246,13 @@ body::before {
 }
 
 
-/* TRANSLATOR */
+/* TRADUCTOR */
 
 .translator {
     display: grid;
 
     grid-template-columns:
         minmax(0, 1fr)
-        58px
         minmax(0, 1fr);
 
     align-items: stretch;
@@ -270,8 +268,7 @@ body::before {
 
     overflow: hidden;
 
-    border:
-        1px solid var(--border);
+    border: 1px solid var(--border);
 
     background:
         linear-gradient(
@@ -295,7 +292,7 @@ body::before {
 }
 
 
-/* PANEL HEADER */
+/* CABECERA PANEL */
 
 .panel-header {
     height: 38px;
@@ -349,9 +346,7 @@ textarea {
 
     padding: 14px;
 
-    font-family:
-        "Courier New",
-        monospace;
+    font-family: "Courier New", monospace;
 
     font-size: 14px;
 
@@ -365,7 +360,7 @@ textarea::placeholder {
 }
 
 
-/* FOOTER PANEL */
+/* PIE DEL PANEL */
 
 .panel-footer {
     height: 38px;
@@ -406,86 +401,7 @@ textarea::placeholder {
 }
 
 
-/* CENTRO */
-
-.converter-center {
-    display: flex;
-
-    flex-direction: column;
-
-    align-items: center;
-    justify-content: center;
-
-    gap: 7px;
-
-    color: var(--green);
-}
-
-.converter-center .line {
-    width: 1px;
-    flex: 1;
-
-    background:
-        linear-gradient(
-            to bottom,
-            transparent,
-            var(--border),
-            transparent
-        );
-}
-
-.convert-icon {
-    width: 38px;
-    height: 38px;
-
-    display: grid;
-    place-items: center;
-
-    border: 1px solid var(--border);
-
-    color: var(--green);
-
-    font-size: 21px;
-
-    background: rgba(0,255,102,.025);
-
-    box-shadow:
-        0 0 15px rgba(0,255,102,.08);
-}
-
-
-/* LIVE REAL */
-
-#liveStatus {
-    color: var(--green);
-
-    font-size: 7px;
-
-    letter-spacing: 1px;
-
-    white-space: nowrap;
-
-    text-shadow:
-        0 0 6px var(--green);
-
-    animation:
-        livePulse 1.5s infinite;
-}
-
-@keyframes livePulse {
-
-    0%,
-    100% {
-        opacity: 1;
-    }
-
-    50% {
-        opacity: .4;
-    }
-}
-
-
-/* ACTIONS */
+/* BOTONES */
 
 .actions {
     display: flex;
@@ -522,11 +438,12 @@ textarea::placeholder {
 
 .action.danger:active {
     color: var(--red);
+
     border-color: var(--red);
 }
 
 
-/* INFO */
+/* INFORMACIÓN */
 
 .info {
     display: grid;
@@ -601,7 +518,7 @@ footer span {
 
 
 /* =========================
-   ANDROID / MÓVILES
+   MÓVIL
    ========================= */
 
 @media (max-width: 600px) {
@@ -639,6 +556,9 @@ footer span {
             calc(100% - 20px);
     }
 
+
+    /* HERO */
+
     .hero {
         padding:
             18px
@@ -672,18 +592,15 @@ footer span {
     }
 
 
-    /* DOS PANELES LADO A LADO */
+    /* PANELES */
 
     .translator {
-
         grid-template-columns:
             minmax(0, 1fr)
-            28px
             minmax(0, 1fr);
 
         gap: 5px;
     }
-
 
     .panel-header {
         height: 32px;
@@ -700,7 +617,6 @@ footer span {
         font-size: 6px;
     }
 
-
     textarea {
         height:
             clamp(145px, 28vh, 190px);
@@ -712,7 +628,6 @@ footer span {
 
         line-height: 1.45;
     }
-
 
     .panel-footer {
         height: 32px;
@@ -732,25 +647,7 @@ footer span {
     }
 
 
-    /* CENTRO */
-
-    .converter-center {
-        gap: 4px;
-    }
-
-    .convert-icon {
-        width: 26px;
-        height: 26px;
-
-        font-size: 15px;
-    }
-
-    #liveStatus {
-        font-size: 5px;
-    }
-
-
-    /* BOTONES */
+    /* ACCIONES */
 
     .actions {
         margin:
@@ -817,7 +714,7 @@ footer span {
 }
 
 
-/* TELÉFONOS MUY PEQUEÑOS */
+/* TELÉFONOS PEQUEÑOS */
 
 @media (max-width: 370px) {
 
