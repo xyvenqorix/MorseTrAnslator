@@ -5,13 +5,16 @@
     MORSE//NET
 
     Conversor automático:
-    TEXTO <-> MORSE
 
-    Morse NO es cifrado seguro.
-    Es simplemente un sistema de
-    representación de caracteres.
+    TEXTO → MORSE
+    MORSE → TEXTO
+
+    La conversión ocurre
+    inmediatamente mientras escribes.
 */
 
+
+/* DICCIONARIO MORSE */
 
 const MORSE = {
 
@@ -74,7 +77,7 @@ const MORSE = {
 };
 
 
-/* TABLA INVERSA */
+/* DICCIONARIO INVERSO */
 
 const REVERSE_MORSE = {};
 
@@ -83,8 +86,7 @@ for (
     of Object.entries(MORSE)
 ) {
 
-    REVERSE_MORSE[code] =
-        letter;
+    REVERSE_MORSE[code] = letter;
 
 }
 
@@ -92,62 +94,37 @@ for (
 /* ELEMENTOS */
 
 const inputText =
-    document.getElementById(
-        "inputText"
-    );
+    document.getElementById("inputText");
 
 const outputText =
-    document.getElementById(
-        "outputText"
-    );
+    document.getElementById("outputText");
 
 const copyBtn =
-    document.getElementById(
-        "copyBtn"
-    );
+    document.getElementById("copyBtn");
 
 const pasteBtn =
-    document.getElementById(
-        "pasteBtn"
-    );
+    document.getElementById("pasteBtn");
 
 const clearBtn =
-    document.getElementById(
-        "clearBtn"
-    );
+    document.getElementById("clearBtn");
 
 const swapBtn =
-    document.getElementById(
-        "swapBtn"
-    );
+    document.getElementById("swapBtn");
 
 const inputCounter =
-    document.getElementById(
-        "inputCounter"
-    );
+    document.getElementById("inputCounter");
 
 const outputCounter =
-    document.getElementById(
-        "outputCounter"
-    );
+    document.getElementById("outputCounter");
 
 const inputStatus =
-    document.getElementById(
-        "inputStatus"
-    );
+    document.getElementById("inputStatus");
 
 const outputStatus =
-    document.getElementById(
-        "outputStatus"
-    );
-
-const liveStatus =
-    document.getElementById(
-        "liveStatus"
-    );
+    document.getElementById("outputStatus");
 
 
-/* NORMALIZAR */
+/* NORMALIZAR TEXTO */
 
 function normalizeText(text) {
 
@@ -199,9 +176,7 @@ function morseToText(morse) {
 
     return morse
         .trim()
-        .split(
-            /\s*\/\s*/
-        )
+        .split(/\s*\/\s*/)
         .map(word => {
 
             return word
@@ -236,9 +211,10 @@ function looksLikeMorse(text) {
         return false;
     }
 
+
     /*
         Si contiene letras,
-        lo consideramos texto.
+        se considera texto.
     */
 
     if (
@@ -252,9 +228,11 @@ function looksLikeMorse(text) {
 
 
     /*
-        Morse solamente puede
-        contener puntos, guiones,
-        espacios y /
+        Morse utiliza:
+        .
+        -
+        /
+        espacios
     */
 
     return (
@@ -279,17 +257,7 @@ function updateCounters() {
 }
 
 
-/* CAMBIAR LIVE */
-
-function setLive(status) {
-
-    liveStatus.textContent =
-        status;
-
-}
-
-
-/* CONVERSIÓN */
+/* CONVERSIÓN AUTOMÁTICA */
 
 function convert() {
 
@@ -297,9 +265,7 @@ function convert() {
         inputText.value;
 
 
-    /*
-        SIN TEXTO
-    */
+    /* VACÍO */
 
     if (!value.trim()) {
 
@@ -311,19 +277,14 @@ function convert() {
         outputStatus.textContent =
             "WAITING";
 
-        setLive(
-            "● WAIT"
-        );
-
         updateCounters();
 
         return;
+
     }
 
 
-    /*
-        MORSE
-    */
+    /* MORSE → TEXTO */
 
     if (
         looksLikeMorse(value)
@@ -338,16 +299,10 @@ function convert() {
         outputStatus.textContent =
             "TEXT";
 
-        setLive(
-            "● MORSE"
-        );
-
     }
 
 
-    /*
-        TEXTO
-    */
+    /* TEXTO → MORSE */
 
     else {
 
@@ -359,10 +314,6 @@ function convert() {
 
         outputStatus.textContent =
             "MORSE";
-
-        setLive(
-            "● TEXT"
-        );
 
     }
 
@@ -454,10 +405,6 @@ function clearAll() {
     outputStatus.textContent =
         "WAITING";
 
-    setLive(
-        "● WAIT"
-    );
-
     updateCounters();
 
     inputText.focus();
@@ -483,10 +430,6 @@ function swapValues() {
 
     outputStatus.textContent =
         "SWAPPED";
-
-    setLive(
-        "● SWAP"
-    );
 
     updateCounters();
 
@@ -524,7 +467,3 @@ swapBtn.addEventListener(
 /* INICIO */
 
 updateCounters();
-
-setLive(
-    "● WAIT"
-);
