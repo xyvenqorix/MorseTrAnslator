@@ -1,279 +1,311 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
     <title>MORSE//NET — Translator</title>
-    
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "Morse//Net",
-  "url": "https://morcetrans.vercel.app/",
-  "description": "Aplicación online para traducir texto a código Morse y código Morse a texto.",
-  "author": {
-    "@type": "Person",
-    "name": "xyvenqorix"
-  },
-  "creator": {
-    "@type": "Person",
-    "name": "xyvenqorix"
-  },
-  "publisher": {
-    "@type": "Organization",
-    "name": "xyvenqorix"
-  },
-  "applicationCategory": "UtilitiesApplication",
-  "operatingSystem": "Web Browser"
-}
-</script>
 
+    <!-- GOOGLE SITE VERIFICATION -->
+    <meta name="google-site-verification"
+          content="yOnLDZdSovh5oYDUc7dJ4VM26JiXajwl7IOkt1k-Blk">
+
+    <!-- SEO -->
+    <meta name="author" content="xyvenqorix">
+    <meta name="creator" content="xyvenqorix">
+    <meta name="publisher" content="xyvenqorix">
+
+    <meta name="description"
+          content="Morse//Net es una aplicación traductora de código Morse online. Convierte texto a Morse y Morse a texto de forma rápida y automática.">
+
+    <meta name="robots" content="index, follow">
+
+    <!-- CANONICAL -->
+    <link rel="canonical" href="https://morce.vercel.app/">
+
+    <!-- OPEN GRAPH -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://morcetrans.vercel.app/">
+    <meta property="og:site_name" content="Morse//Net">
+    <meta property="og:title" content="Morse//Net — Traductor de Código Morse">
+    <meta property="og:description"
+          content="Aplicación online para traducir texto a código Morse y código Morse a texto automáticamente.">
+
+    <!-- STRUCTURED DATA -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebApplication",
+      "name": "Morse//Net",
+      "url": "https://morcetrans.vercel.app/",
+      "description": "Aplicación online para traducir texto a código Morse y código Morse a texto.",
+      "author": {
+        "@type": "Person",
+        "name": "xyvenqorix"
+      },
+      "creator": {
+        "@type": "Person",
+        "name": "xyvenqorix"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "xyvenqorix"
+      },
+      "applicationCategory": "UtilitiesApplication",
+      "operatingSystem": "Web Browser"
+    }
+    </script>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="includes/style.css">
+
 </head>
 
+
 <body>
-    <meta name="google-site-verification" content="yOnLDZdSovh5oYDUc7dJ4VM26JiXajwl7IOkt1k-Blk" />
 
-<meta name="author" content="xyvenqorix">
-<meta name="creator" content="xyvenqorix">
-<meta name="publisher" content="xyvenqorix">
+    <div class="scanlines"></div>
 
-<meta name="description" content="Morse//Net es una aplicación traductora de código Morse online. Convierte texto a Morse y Morse a texto de forma rápida y automática.">
+    <header class="topbar">
 
-<link rel="canonical" href="https://morce.vercel.app/">
-
-<meta name="robots" content="index, follow">
-
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://morcetrans.vercel.app/">
-<meta property="og:site_name" content="Morse//Net">
-<meta property="og:title" content="Morse//Net — Traductor de Código Morse">
-<meta property="og:description" content="Aplicación online para traducir texto a código Morse y código Morse a texto automáticamente.">
-
-
-<div class="scanlines"></div>
-
-<header class="topbar">
-
-    <div class="logo">
-        <span>&gt;_</span> MORSE<span class="blink">_</span>NET
-    </div>
-
-    <nav class="socials">
-
-        <a href="https://github.com/xyvenqorix" target="_blank" aria-label="GitHub">
-            <svg viewBox="0 0 24 24">
-                <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.94c.58.1.79-.25.79-.56v-2.17c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.17 1.19a10.9 10.9 0 0 1 5.78 0c2.19-1.5 3.17-1.19 3.17-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.7 5.44-5.28 5.73.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/>
-            </svg>
-        </a>
-
-        <a href="https://www.instagram.com/rodol_ugc/" target="_blank" aria-label="Instagram">
-            <svg viewBox="0 0 24 24">
-                <rect x="3" y="3" width="18" height="18" rx="5"/>
-                <circle cx="12" cy="12" r="4"/>
-                <circle cx="17.5" cy="6.5" r="1"/>
-            </svg>
-        </a>
-
-        <a href="https://discord.com/invite/5x2HR22wA" target="_blank" aria-label="Discord">
-            <svg viewBox="0 0 24 24">
-                <path d="M19.54 5.16A16.2 16.2 0 0 0 15.6 4l-.48.98a14.7 14.7 0 0 0-6.24 0L8.4 4a16.3 16.3 0 0 0-3.95 1.17C1.96 8.4 1.28 11.55 1.5 14.66a16 16 0 0 0 4.84 2.46l1.17-1.6c-.64-.24-1.25-.53-1.82-.88l.44-.34c3.5 1.63 7.3 1.63 10.76 0l.45.34c-.58.35-1.19.65-1.83.88l1.17 1.6a16 16 0 0 0 4.84-2.46c.27-3.66-.47-6.78-1.98-9.5ZM8.84 13.24c-1.05 0-1.91-.96-1.91-2.14s.84-2.14 1.91-2.14 1.93.96 1.92 2.14c0 1.18-.85 2.14-1.92 2.14Zm6.32 0c-1.05 0-1.91-.96-1.91-2.14s.84-2.14 1.91-2.14 1.93.96 1.92 2.14c0 1.18-.85 2.14-1.92 2.14Z"/>
-            </svg>
-        </a>
-
-    </nav>
-
-</header>
-
-
-<main class="container">
-
-    <section class="hero">
-
-        <div class="terminal-label">
-            [ LIVE CONVERTER ]
+        <div class="logo">
+            <span>&gt;_</span> MORSE<span class="blink">_</span>NET
         </div>
 
-        <h1>
-            MORSE<span>//</span>TRANSLATOR
-        </h1>
+        <nav class="socials">
 
-        <p>
-            Escribe y convierte automáticamente.
-        </p>
+            <a href="https://github.com/xyvenqorix"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="GitHub">
 
-    </section>
+                <svg viewBox="0 0 24 24">
+                    <path d="M12 .5A11.5 11.5 0 0 0 8.36 22.94c.58.1.79-.25.79-.56v-2.17c-3.22.7-3.9-1.36-3.9-1.36-.53-1.34-1.3-1.7-1.3-1.7-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.76 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.57-.29-5.27-1.29-5.27-5.73 0-1.27.45-2.3 1.2-3.11-.12-.3-.52-1.48.11-3.08 0 0 .98-.31 3.17 1.19a10.9 10.9 0 0 1 5.78 0c2.19-1.5 3.17-1.19 3.17-1.19.63 1.6.23 2.78.11 3.08.75.81 1.2 1.84 1.2 3.11 0 4.45-2.7 5.44-5.28 5.73.41.35.78 1.04.78 2.1v3.11c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/>
+                </svg>
+
+            </a>
 
 
-    <section class="translator">
+            <a href="https://www.instagram.com/rodol_ugc/"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Instagram">
 
-        <!-- INPUT -->
+                <svg viewBox="0 0 24 24">
+                    <rect x="3" y="3" width="18" height="18" rx="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="1"/>
+                </svg>
 
-        <div class="panel">
+            </a>
 
-            <div class="panel-header">
 
-                <span>
-                    <b>&gt;</b> INPUT
-                </span>
+            <a href="https://discord.com/invite/5x2HR22wA"
+               target="_blank"
+               rel="noopener noreferrer"
+               aria-label="Discord">
 
-                <span id="inputStatus">
-                    READY
-                </span>
+                <svg viewBox="0 0 24 24">
+                    <path d="M19.54 5.16A16.2 16.2 0 0 0 15.6 4l-.48.98a14.7 14.7 0 0 0-6.24 0L8.4 4a16.3 16.3 0 0 0-3.95 1.17C1.96 8.4 1.28 11.55 1.5 14.66a16 16 0 0 0 4.84 2.46l1.17-1.6c-.64-.24-1.25-.53-1.82-.88l.44-.34c3.5 1.63 7.3 1.63 10.76 0l.45.34c-.58.35-1.19.65-1.83.88l1.17 1.6a16 16 0 0 0 4.84-2.46c.27-3.66-.47-6.78-1.98-9.5ZM8.84 13.24c-1.05 0-1.91-.96-1.91-2.14s.84-2.14 1.91-2.14 1.93.96 1.92 2.14c0 1.18-.85 2.14-1.92 2.14Zm6.32 0c-1.05 0-1.91-.96-1.91-2.14s.84-2.14 1.91-2.14 1.93.96 1.92 2.14c0 1.18-.85 2.14-1.92 2.14Z"/>
+                </svg>
+
+            </a>
+
+        </nav>
+
+    </header>
+
+
+    <main class="container">
+
+        <section class="hero">
+
+            <div class="terminal-label">
+                [ LIVE CONVERTER ]
+            </div>
+
+            <h1>
+                MORSE<span>//</span>TRANSLATOR
+            </h1>
+
+            <p>
+                Escribe y convierte automáticamente.
+            </p>
+
+        </section>
+
+
+        <section class="translator">
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <span>
+                        <b>&gt;</b> INPUT
+                    </span>
+
+                    <span id="inputStatus">
+                        READY
+                    </span>
+
+                </div>
+
+
+                <textarea
+                    id="inputText"
+                    placeholder="Escribe texto o Morse..."
+                    spellcheck="false"
+                ></textarea>
+
+
+                <div class="panel-footer">
+
+                    <span id="inputCounter">
+                        0
+                    </span>
+
+                    <button
+                        class="small-btn"
+                        id="pasteBtn"
+                    >
+                        PEGAR
+                    </button>
+
+                </div>
 
             </div>
 
-            <textarea
-                id="inputText"
-                placeholder="Escribe texto o Morse..."
-                spellcheck="false"
-            ></textarea>
 
-            <div class="panel-footer">
+            <div class="panel">
 
-                <span id="inputCounter">
-                    0
-                </span>
+                <div class="panel-header">
 
-                <button
-                    class="small-btn"
-                    id="pasteBtn"
-                >
-                    PEGAR
-                </button>
+                    <span>
+                        <b>&gt;</b> OUTPUT
+                    </span>
 
-            </div>
+                    <span id="outputStatus">
+                        WAITING
+                    </span>
 
-        </div>
+                </div>
 
 
-        <!-- OUTPUT -->
+                <textarea
+                    id="outputText"
+                    placeholder="Resultado..."
+                    spellcheck="false"
+                    readonly
+                ></textarea>
 
-        <div class="panel">
 
-            <div class="panel-header">
+                <div class="panel-footer">
 
-                <span>
-                    <b>&gt;</b> OUTPUT
-                </span>
+                    <span id="outputCounter">
+                        0
+                    </span>
 
-                <span id="outputStatus">
-                    WAITING
-                </span>
+                    <button
+                        class="small-btn"
+                        id="copyBtn"
+                    >
+                        COPIAR
+                    </button>
 
-            </div>
-
-            <textarea
-                id="outputText"
-                placeholder="Resultado..."
-                spellcheck="false"
-                readonly
-            ></textarea>
-
-            <div class="panel-footer">
-
-                <span id="outputCounter">
-                    0
-                </span>
-
-                <button
-                    class="small-btn"
-                    id="copyBtn"
-                >
-                    COPIAR
-                </button>
+                </div>
 
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <section class="actions">
+        <section class="actions">
 
-        <button
-            id="clearBtn"
-            class="action danger"
-        >
-            × LIMPIAR
-        </button>
+            <button
+                id="clearBtn"
+                class="action danger"
+            >
+                × LIMPIAR
+            </button>
 
-        <button
-            id="swapBtn"
-            class="action"
-        >
-            ⇄ INTERCAMBIAR
-        </button>
+            <button
+                id="swapBtn"
+                class="action"
+            >
+                ⇄ INTERCAMBIAR
+            </button>
 
-    </section>
+        </section>
 
 
-    <section class="info">
+        <section class="info">
 
-        <div class="info-card">
+            <div class="info-card">
 
-            <strong>01</strong>
+                <strong>01</strong>
 
-            <div>
-                <h3>TEXTO → MORSE</h3>
+                <div>
+                    <h3>TEXTO → MORSE</h3>
 
-                <p>
-                    Conversión instantánea mientras escribes.
-                </p>
+                    <p>
+                        Conversión instantánea mientras escribes.
+                    </p>
+                </div>
+
             </div>
 
-        </div>
 
+            <div class="info-card">
 
-        <div class="info-card">
+                <strong>02</strong>
 
-            <strong>02</strong>
+                <div>
+                    <h3>MORSE → TEXTO</h3>
 
-            <div>
-                <h3>MORSE → TEXTO</h3>
+                    <p>
+                        Detecta Morse automáticamente.
+                    </p>
+                </div>
 
-                <p>
-                    Detecta Morse automáticamente.
-                </p>
             </div>
 
-        </div>
 
+            <div class="info-card">
 
-        <div class="info-card">
+                <strong>03</strong>
 
-            <strong>03</strong>
+                <div>
+                    <h3>LOCAL</h3>
 
-            <div>
-                <h3>LOCAL</h3>
+                    <p>
+                        Todo funciona directamente en el navegador.
+                    </p>
+                </div>
 
-                <p>
-                    Todo funciona directamente en el navegador.
-                </p>
             </div>
 
-        </div>
-
-    </section>
+        </section>
 
 
-    <footer>
+        <footer>
 
-        MORSE//NET
-        <span>•</span>
-        MORSE CONVERTER
-        <span>•</span>
-        v2.0
+            MORSE//NET
+            <span>•</span>
+            MORSE CONVERTER
+            <span>•</span>
+            v2.0
 
-    </footer>
+        </footer>
 
-</main>
+    </main>
 
 
-<script src="includes/app.js"></script>
+    <script src="includes/app.js"></script>
 
 </body>
 </html>
